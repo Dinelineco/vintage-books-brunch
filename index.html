@@ -37,23 +37,24 @@
     *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
 
     :root {
-      --ink: #0d0a08;
-      --ink-deep: #060403;
-      --parchment: #f4ead4;
-      --cream: #ddd1b3;
-      --brass: #c9a55a;
-      --brass-deep: #9a7a3a;
+      --ink: #2a1d10;
+      --ink-deep: #1a1108;
+      --parchment: #ece2c8;
+      --parchment-dark: #d4c8a4;
+      --brass: #8a6420;
+      --brass-deep: #6b4a13;
       --burgundy: #5a1f1c;
       --olive: #4a5240;
-      --muted: #8a7e6b;
+      --muted: #6e5c40;
     }
 
     html { scroll-behavior: smooth; }
 
     body {
       font-family: 'Inter', -apple-system, sans-serif;
-      background: var(--ink);
-      color: var(--parchment);
+      background: url('parchment.jpg') repeat;
+      background-size: 1200px auto;
+      color: var(--ink);
       line-height: 1.65;
       -webkit-font-smoothing: antialiased;
       overflow-x: hidden;
@@ -68,10 +69,10 @@
       position: fixed; top: 0; left: 0; right: 0; z-index: 100;
       display: flex; align-items: center; justify-content: center;
       padding: 18px 24px;
-      background: rgba(6,4,3,0.85);
+      background: rgba(26,17,8,0.92);
       backdrop-filter: blur(14px);
       -webkit-backdrop-filter: blur(14px);
-      border-bottom: 1px solid rgba(201,165,90,0.15);
+      border-bottom: 1px solid rgba(138,100,32,0.3);
     }
 
     .topbar a {
@@ -85,7 +86,7 @@
     }
 
     .topbar a span {
-      color: var(--brass);
+      color: #c9a55a;
       font-style: italic;
       letter-spacing: 1px;
       text-transform: lowercase;
@@ -112,9 +113,9 @@
       position: absolute; inset: 0;
       background: linear-gradient(
         to bottom,
-        rgba(6,4,3,0.78) 0%,
-        rgba(6,4,3,0.55) 35%,
-        rgba(6,4,3,0.92) 100%
+        rgba(20,12,4,0.55) 0%,
+        rgba(20,12,4,0.35) 35%,
+        rgba(20,12,4,0.75) 100%
       );
       z-index: 1;
     }
@@ -130,11 +131,10 @@
       font-family: 'Cormorant Garamond', serif;
       font-style: italic;
       font-size: 16px;
-      color: var(--brass);
+      color: #d4b878;
       letter-spacing: 4px;
       text-transform: uppercase;
       margin-bottom: 24px;
-      opacity: 0.9;
     }
 
     .hero-title {
@@ -142,14 +142,14 @@
       font-weight: 500;
       font-size: clamp(48px, 9vw, 88px);
       line-height: 1;
-      color: var(--parchment);
+      color: #f4ead4;
       margin-bottom: 18px;
       letter-spacing: -1px;
     }
 
     .hero-title em {
       font-style: italic;
-      color: var(--brass);
+      color: #d4b878;
       font-weight: 400;
     }
 
@@ -157,7 +157,7 @@
       font-family: 'Cormorant Garamond', serif;
       font-style: italic;
       font-size: clamp(18px, 2.4vw, 22px);
-      color: var(--cream);
+      color: #ece2c8;
       font-weight: 300;
       max-width: 560px;
       margin: 0 auto 12px;
@@ -166,7 +166,7 @@
 
     .hero-when {
       font-size: 12px;
-      color: var(--brass);
+      color: #d4b878;
       letter-spacing: 4px;
       text-transform: uppercase;
       margin-bottom: 40px;
@@ -181,29 +181,36 @@
       letter-spacing: 4px;
       text-transform: uppercase;
       text-decoration: none;
-      color: var(--ink);
-      background: var(--brass);
       padding: 18px 52px;
-      border: 1px solid var(--brass);
       transition: all 0.3s ease;
+      cursor: pointer;
     }
 
-    .cta:hover {
+    .cta-light {
+      color: #1a1108;
+      background: #d4b878;
+      border: 1px solid #d4b878;
+    }
+
+    .cta-light:hover {
       background: transparent;
-      color: var(--brass);
+      color: #d4b878;
       transform: translateY(-2px);
       letter-spacing: 5px;
     }
 
-    .cta-ghost {
-      background: transparent;
-      color: var(--brass);
-      border-color: var(--brass);
+    .cta-dark {
+      color: var(--parchment);
+      background: var(--ink);
+      border: 1px solid var(--ink);
     }
 
-    .cta-ghost:hover {
+    .cta-dark:hover {
       background: var(--brass);
-      color: var(--ink);
+      color: var(--parchment);
+      border-color: var(--brass);
+      transform: translateY(-2px);
+      letter-spacing: 5px;
     }
 
     .hero-walkin {
@@ -212,44 +219,21 @@
       font-family: 'Cormorant Garamond', serif;
       font-style: italic;
       font-size: 15px;
-      color: var(--muted);
-    }
-
-    /* ─── DECORATIVE DIVIDER ─── */
-    .divider {
-      display: flex; align-items: center; justify-content: center;
-      gap: 18px;
-      padding: 24px;
-    }
-
-    .divider-line {
-      flex: 0 0 60px;
-      height: 1px;
-      background: linear-gradient(to right, transparent, var(--brass), transparent);
-    }
-
-    .divider-mark {
-      font-family: 'Cormorant Garamond', serif;
-      color: var(--brass);
-      font-size: 16px;
-      font-style: italic;
-      letter-spacing: 3px;
-      text-transform: uppercase;
+      color: #b0a085;
     }
 
     /* ─── PROOF / QUOTE ─── */
     .quote {
-      background: var(--ink-deep);
-      padding: 80px 24px;
+      padding: 100px 24px;
       text-align: center;
     }
 
     .quote-text {
       font-family: 'Cormorant Garamond', serif;
       font-style: italic;
-      font-weight: 300;
+      font-weight: 400;
       font-size: clamp(22px, 3vw, 30px);
-      color: var(--cream);
+      color: var(--ink);
       max-width: 680px;
       margin: 0 auto 18px;
       line-height: 1.45;
@@ -280,7 +264,6 @@
     .atmosphere img {
       width: 100%; height: 360px;
       object-fit: cover; display: block;
-      filter: brightness(0.95) saturate(1.05);
     }
 
     @media (max-width: 768px) {
@@ -291,7 +274,6 @@
 
     /* ─── MENU SECTION ─── */
     .menu {
-      background: var(--ink);
       padding: 100px 24px;
     }
 
@@ -316,7 +298,7 @@
       font-weight: 500;
       font-size: clamp(36px, 6vw, 56px);
       text-align: center;
-      color: var(--parchment);
+      color: var(--ink);
       margin-bottom: 12px;
       line-height: 1.1;
     }
@@ -329,11 +311,11 @@
     .menu-sub {
       font-family: 'Cormorant Garamond', serif;
       font-style: italic;
-      font-size: 17px;
+      font-size: 18px;
       text-align: center;
       color: var(--muted);
       margin-bottom: 60px;
-      max-width: 540px;
+      max-width: 560px;
       margin-left: auto;
       margin-right: auto;
     }
@@ -355,6 +337,7 @@
       font-size: 8px;
       vertical-align: middle;
       color: var(--brass-deep);
+      opacity: 0.6;
     }
 
     .menu-section-sub {
@@ -363,12 +346,12 @@
       text-align: center;
       color: var(--muted);
       margin-bottom: 36px;
-      font-size: 15px;
+      font-size: 16px;
     }
 
     .dish {
       padding: 22px 0;
-      border-bottom: 1px solid rgba(201,165,90,0.1);
+      border-bottom: 1px solid rgba(138,100,32,0.18);
     }
 
     .dish:last-child { border-bottom: none; }
@@ -385,13 +368,13 @@
       font-family: 'Cormorant Garamond', serif;
       font-size: 22px;
       font-weight: 500;
-      color: var(--parchment);
+      color: var(--ink);
       letter-spacing: 0.5px;
     }
 
     .dish-dots {
       flex: 1;
-      border-bottom: 1px dotted rgba(201,165,90,0.3);
+      border-bottom: 1px dotted rgba(138,100,32,0.45);
       margin: 0 12px 6px;
     }
 
@@ -399,15 +382,15 @@
       font-family: 'Cormorant Garamond', serif;
       font-size: 20px;
       color: var(--brass);
-      font-weight: 500;
+      font-weight: 600;
       white-space: nowrap;
     }
 
     .dish-desc {
       font-size: 14px;
       color: var(--muted);
-      font-weight: 300;
-      line-height: 1.55;
+      font-weight: 400;
+      line-height: 1.6;
       max-width: 90%;
     }
 
@@ -436,7 +419,7 @@
       font-family: 'Cormorant Garamond', serif;
       font-style: italic;
       font-size: 14px;
-      color: var(--brass);
+      color: #d4b878;
       letter-spacing: 4px;
       text-transform: uppercase;
       margin-bottom: 18px;
@@ -446,30 +429,29 @@
       font-family: 'Cormorant Garamond', serif;
       font-weight: 500;
       font-size: clamp(36px, 6vw, 56px);
-      color: var(--parchment);
+      color: #f4ead4;
       line-height: 1.1;
       margin-bottom: 14px;
     }
 
     .closer-title em {
       font-style: italic;
-      color: var(--brass);
+      color: #d4b878;
     }
 
     .closer-sub {
       font-family: 'Cormorant Garamond', serif;
       font-style: italic;
       font-size: 18px;
-      color: var(--cream);
+      color: #ece2c8;
       margin-bottom: 36px;
       font-weight: 300;
     }
 
     /* ─── INFO ─── */
     .info {
-      background: var(--ink-deep);
       padding: 80px 24px 60px;
-      border-top: 1px solid rgba(201,165,90,0.1);
+      border-top: 1px solid rgba(138,100,32,0.2);
     }
 
     .info-grid {
@@ -497,14 +479,14 @@
 
     .info-block p {
       font-size: 14px;
-      color: var(--cream);
+      color: var(--ink);
       line-height: 1.8;
     }
 
     .info-block a {
-      color: var(--cream);
+      color: var(--ink);
       text-decoration: none;
-      border-bottom: 1px solid rgba(201,165,90,0.3);
+      border-bottom: 1px solid rgba(138,100,32,0.4);
       transition: border-color 0.2s, color 0.2s;
     }
 
@@ -518,7 +500,7 @@
       background: var(--ink-deep);
       padding: 32px 24px 40px;
       text-align: center;
-      border-top: 1px solid rgba(201,165,90,0.08);
+      border-top: 1px solid rgba(138,100,32,0.2);
     }
 
     .footer-mark {
@@ -526,24 +508,23 @@
       font-size: 18px;
       letter-spacing: 6px;
       text-transform: uppercase;
-      color: var(--brass);
+      color: #d4b878;
       margin-bottom: 8px;
     }
 
     .footer p {
       font-size: 11px;
-      color: var(--muted);
+      color: #b0a085;
       letter-spacing: 1px;
     }
 
     .footer a {
-      color: var(--brass);
+      color: #d4b878;
       text-decoration: none;
     }
 
-    /* ─── AGE / POLICY NOTICE ─── */
+    /* ─── POLICY ─── */
     .policy {
-      background: var(--ink-deep);
       padding: 16px 24px;
       text-align: center;
       font-family: 'Cormorant Garamond', serif;
@@ -551,7 +532,7 @@
       font-size: 13px;
       color: var(--muted);
       letter-spacing: 1px;
-      border-top: 1px solid rgba(201,165,90,0.08);
+      border-top: 1px solid rgba(138,100,32,0.18);
     }
   </style>
 </head>
@@ -566,13 +547,14 @@
   <section class="hero">
     <video class="hero-bg" autoplay muted loop playsinline preload="auto" poster="IMG_9094.jpg">
       <source src="hero.mp4" type="video/mp4">
+      <source src="hero.mov" type="video/quicktime">
     </video>
     <div class="hero-content">
       <p class="hero-eyebrow">— Saturday &amp; Sunday Brunch —</p>
       <h1 class="hero-title">A New Chapter<br><em>Begins at Brunch.</em></h1>
       <p class="hero-tagline">Beyond the bookshelf, slow mornings unfold over chef-driven plates, poached Waialua eggs, and a quiet kind of magic only Kaimuki knows.</p>
       <p class="hero-when">Sat &amp; Sun &bull; 10AM &ndash; 2PM &bull; Kaimuki, Honolulu</p>
-      <a href="https://www.vintagebookshawaii.com/kaimuki-restaurant-reservations" class="cta" id="cta-hero" onclick="if(typeof fbq!=='undefined')fbq('track','Lead',{content_name:'Hero CTA Brunch'});">Reserve a Table</a>
+      <a href="https://www.vintagebookshawaii.com/kaimuki-restaurant-reservations" class="cta cta-light" id="cta-hero" onclick="if(typeof fbq!=='undefined')fbq('track','Lead',{content_name:'Hero CTA Brunch'});">Reserve a Table</a>
       <span class="hero-walkin">— Walk-ins welcome at the bar —</span>
     </div>
   </section>
@@ -711,7 +693,7 @@
       <p class="closer-eyebrow">— Save Your Seat —</p>
       <h2 class="closer-title">Brunch is best <em>unhurried.</em></h2>
       <p class="closer-sub">Tables go quickly on weekends. Reserve your spot, settle in, and let the morning take its time.</p>
-      <a href="https://www.vintagebookshawaii.com/kaimuki-restaurant-reservations" class="cta" id="cta-closer" onclick="if(typeof fbq!=='undefined')fbq('track','Lead',{content_name:'Closer CTA Brunch'});">Reserve a Table</a>
+      <a href="https://www.vintagebookshawaii.com/kaimuki-restaurant-reservations" class="cta cta-light" id="cta-closer" onclick="if(typeof fbq!=='undefined')fbq('track','Lead',{content_name:'Closer CTA Brunch'});">Reserve a Table</a>
     </div>
   </section>
 
