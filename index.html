@@ -3,15 +3,15 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Brunch at Vintage Books | Hidden in Kaimuki, Honolulu</title>
-  <meta name="description" content="Weekend brunch at Vintage Books — chef-driven savory & sweet plates in Honolulu's hidden literary speakeasy. Saturday & Sunday, 10AM–2PM. Reserve your table.">
-  <meta property="og:title" content="Brunch at Vintage Books — Honolulu's Hidden Literary Speakeasy">
-  <meta property="og:description" content="Saturday & Sunday brunch, 10AM–2PM. Chef-driven savory plates, brunch sweets, and morning cocktails in Kaimuki.">
+  <title>Volume I — Weekend Brunch | Vintage Books, Honolulu</title>
+  <meta name="description" content="Weekend brunch at Vintage Books — Honolulu's hidden literary speakeasy in Kaimuki. Saturday & Sunday, 10AM–2PM. Reserve your chapter.">
+  <meta property="og:title" content="Volume I — Weekend Brunch at Vintage Books">
+  <meta property="og:description" content="A hidden literary speakeasy in Kaimuki. Brunch served Saturday & Sunday, 10AM–2PM.">
   <meta property="og:type" content="website">
   <meta property="og:url" content="https://www.vintagebookshawaii.com/brunch">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;0,700;1,400;1,500&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,500;1,600&family=IM+Fell+English+SC&family=IM+Fell+English:ital@0;1&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
 
   <!-- Meta Pixel Code -->
   <script>
@@ -38,11 +38,14 @@
 
     :root {
       --ink: #2a1d10;
-      --ink-deep: #1a1108;
+      --ink-soft: #4a3520;
+      --ink-deep: #14100a;
       --parchment: #ece2c8;
+      --parchment-light: #f4ead4;
       --parchment-dark: #d4c8a4;
       --brass: #8a6420;
-      --brass-deep: #6b4a13;
+      --brass-bright: #b88e3a;
+      --brass-deep: #5e4515;
       --burgundy: #5a1f1c;
       --olive: #4a5240;
       --muted: #6e5c40;
@@ -53,228 +56,378 @@
     body {
       font-family: 'Inter', -apple-system, sans-serif;
       background: url('parchment.jpg') repeat;
-      background-size: 1200px auto;
+      background-size: 1400px auto;
       color: var(--ink);
       line-height: 1.65;
       -webkit-font-smoothing: antialiased;
       overflow-x: hidden;
     }
 
-    .serif {
-      font-family: 'Cormorant Garamond', Georgia, serif;
+    .serif { font-family: 'Cormorant Garamond', Georgia, serif; }
+    .display { font-family: 'IM Fell English SC', 'Cormorant Garamond', serif; }
+    .display-it { font-family: 'IM Fell English', 'Cormorant Garamond', serif; font-style: italic; }
+
+    /* ─────────────────────────────────────────
+       FILM GRAIN — applied site-wide subtly
+    ───────────────────────────────────────── */
+    body::before {
+      content: '';
+      position: fixed; inset: 0;
+      pointer-events: none;
+      z-index: 9999;
+      opacity: 0.06;
+      mix-blend-mode: multiply;
+      background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='220' height='220'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='0.92' numOctaves='2'/><feColorMatrix values='0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0.45 0'/></filter><rect width='100%' height='100%' filter='url(%23n)'/></svg>");
+      animation: grainShift 1.2s steps(4) infinite;
+    }
+    @keyframes grainShift {
+      0%   { transform: translate(0, 0); }
+      25%  { transform: translate(-3%, 2%); }
+      50%  { transform: translate(2%, -2%); }
+      75%  { transform: translate(-1%, 1%); }
+      100% { transform: translate(0, 0); }
     }
 
     /* ─── TOP BAR ─── */
     .topbar {
       position: fixed; top: 0; left: 0; right: 0; z-index: 100;
-      display: flex; align-items: center; justify-content: center;
-      padding: 18px 24px;
-      background: rgba(26,17,8,0.92);
+      display: flex; align-items: center; justify-content: space-between;
+      padding: 16px 32px;
+      background: rgba(20,16,10,0.94);
       backdrop-filter: blur(14px);
       -webkit-backdrop-filter: blur(14px);
-      border-bottom: 1px solid rgba(138,100,32,0.3);
+      border-bottom: 1px solid rgba(184,142,58,0.25);
     }
-
-    .topbar a {
-      font-family: 'Cormorant Garamond', serif;
-      font-size: 22px;
-      font-weight: 500;
-      letter-spacing: 6px;
-      text-transform: uppercase;
-      color: var(--parchment);
+    .topbar-mark {
+      font-family: 'IM Fell English SC', serif;
+      font-size: 18px;
+      letter-spacing: 5px;
+      color: var(--parchment-light);
       text-decoration: none;
     }
-
-    .topbar a span {
-      color: #c9a55a;
-      font-style: italic;
-      letter-spacing: 1px;
-      text-transform: lowercase;
-      font-weight: 400;
+    .topbar-mark span { color: var(--brass-bright); font-style: italic; letter-spacing: 1px; text-transform: lowercase; font-family: 'IM Fell English', serif; }
+    .topbar-cta {
+      font-family: 'Inter', sans-serif;
+      font-size: 11px;
+      letter-spacing: 3px;
+      text-transform: uppercase;
+      color: var(--brass-bright);
+      text-decoration: none;
+      padding: 9px 22px;
+      border: 1px solid var(--brass-bright);
+      transition: all 0.3s ease;
     }
+    .topbar-cta:hover { background: var(--brass-bright); color: var(--ink-deep); }
 
-    /* ─── HERO ─── */
+    /* ─────────────────────────────────────────
+       HERO — THE BOOKPLATE
+    ───────────────────────────────────────── */
     .hero {
       position: relative;
       min-height: 100vh; min-height: 100dvh;
       display: flex; align-items: center; justify-content: center;
       overflow: hidden;
+      padding: 80px 20px 40px;
     }
 
-    .hero-bg {
+    .hero-photo {
       position: absolute; inset: 0;
       width: 100%; height: 100%;
       object-fit: cover;
       z-index: 0;
+      animation: kenBurns 28s ease-in-out infinite alternate;
+    }
+    @keyframes kenBurns {
+      0%   { transform: scale(1.05) translate(0, 0); }
+      100% { transform: scale(1.18) translate(-2%, -1%); }
     }
 
-    .hero::after {
+    .hero::before {
       content: '';
       position: absolute; inset: 0;
-      background: linear-gradient(
-        to bottom,
-        rgba(20,12,4,0.55) 0%,
-        rgba(20,12,4,0.35) 35%,
-        rgba(20,12,4,0.75) 100%
-      );
       z-index: 1;
+      background:
+        radial-gradient(ellipse at center, rgba(20,16,10,0.45) 0%, rgba(20,16,10,0.85) 100%),
+        linear-gradient(to bottom, rgba(20,16,10,0.5), rgba(20,16,10,0.85));
     }
 
-    .hero-content {
-      position: relative; z-index: 2;
+    .bookplate {
+      position: relative;
+      z-index: 2;
+      max-width: 620px;
+      width: 100%;
+      padding: 70px 50px 60px;
       text-align: center;
-      padding: 100px 24px 60px;
-      max-width: 720px;
+      animation: fadeUp 1.4s cubic-bezier(0.2, 0.8, 0.2, 1) 0.2s both;
+    }
+    @keyframes fadeUp {
+      from { opacity: 0; transform: translateY(30px); }
+      to   { opacity: 1; transform: translateY(0); }
     }
 
-    .hero-eyebrow {
-      font-family: 'Cormorant Garamond', serif;
+    /* Ornamental corner pieces */
+    .bookplate::before, .bookplate::after,
+    .bookplate-corners > span {
+      content: '';
+      position: absolute;
+      width: 56px; height: 56px;
+      border: 1px solid var(--brass-bright);
+      opacity: 0.85;
+    }
+    .bookplate::before { top: 0; left: 0; border-right: none; border-bottom: none; }
+    .bookplate::after  { top: 0; right: 0; border-left: none; border-bottom: none; }
+    .bookplate-corners span:first-child { bottom: 0; left: 0; border-right: none; border-top: none; }
+    .bookplate-corners span:last-child  { bottom: 0; right: 0; border-left: none; border-top: none; }
+
+    .hero-volume {
+      font-family: 'IM Fell English', serif;
       font-style: italic;
-      font-size: 16px;
-      color: #d4b878;
-      letter-spacing: 4px;
+      font-size: 14px;
+      letter-spacing: 6px;
       text-transform: uppercase;
-      margin-bottom: 24px;
+      color: var(--brass-bright);
+      margin-bottom: 4px;
+    }
+
+    .hero-flourish {
+      display: flex; align-items: center; justify-content: center;
+      gap: 14px;
+      margin: 18px 0 26px;
+    }
+    .hero-flourish-line {
+      width: 60px; height: 1px;
+      background: linear-gradient(to right, transparent, var(--brass-bright));
+    }
+    .hero-flourish-line:last-child {
+      background: linear-gradient(to left, transparent, var(--brass-bright));
+    }
+    .hero-flourish-mark {
+      color: var(--brass-bright);
+      font-size: 14px;
+      letter-spacing: 2px;
     }
 
     .hero-title {
-      font-family: 'Cormorant Garamond', serif;
-      font-weight: 500;
-      font-size: clamp(48px, 9vw, 88px);
+      font-family: 'IM Fell English SC', serif;
+      font-weight: 400;
+      font-size: clamp(38px, 6.4vw, 60px);
       line-height: 1;
-      color: #f4ead4;
-      margin-bottom: 18px;
-      letter-spacing: -1px;
+      color: var(--parchment-light);
+      margin-bottom: 22px;
+      letter-spacing: 4px;
     }
 
-    .hero-title em {
+    .hero-amp {
+      font-family: 'IM Fell English', serif;
       font-style: italic;
-      color: #d4b878;
-      font-weight: 400;
+      color: var(--brass-bright);
+      letter-spacing: 0;
     }
 
     .hero-tagline {
-      font-family: 'Cormorant Garamond', serif;
+      font-family: 'IM Fell English', serif;
       font-style: italic;
-      font-size: clamp(18px, 2.4vw, 22px);
-      color: #ece2c8;
-      font-weight: 300;
-      max-width: 560px;
-      margin: 0 auto 12px;
-      line-height: 1.5;
+      font-size: clamp(17px, 2vw, 20px);
+      color: var(--parchment);
+      line-height: 1.55;
+      max-width: 460px;
+      margin: 0 auto 32px;
+      opacity: 0.95;
     }
 
-    .hero-when {
-      font-size: 12px;
-      color: #d4b878;
-      letter-spacing: 4px;
-      text-transform: uppercase;
-      margin-bottom: 40px;
-      font-weight: 500;
+    /* WAX SEAL CTA */
+    .wax-cta-wrap {
+      display: inline-flex;
+      align-items: center;
+      gap: 22px;
+      flex-wrap: wrap;
+      justify-content: center;
     }
 
-    .cta {
+    .wax-cta {
+      position: relative;
       display: inline-block;
-      font-family: 'Inter', sans-serif;
-      font-size: 12px;
-      font-weight: 600;
+      font-family: 'IM Fell English SC', serif;
+      font-size: 13px;
       letter-spacing: 4px;
       text-transform: uppercase;
       text-decoration: none;
-      padding: 18px 52px;
+      padding: 17px 42px;
+      color: var(--ink-deep);
+      background: linear-gradient(135deg, #d4a854 0%, #b88e3a 50%, #8a6420 100%);
+      border: 1px solid #8a6420;
+      box-shadow: 0 4px 16px rgba(0,0,0,0.4), inset 0 1px 0 rgba(255,255,255,0.3);
       transition: all 0.3s ease;
       cursor: pointer;
     }
-
-    .cta-light {
-      color: #1a1108;
-      background: #d4b878;
-      border: 1px solid #d4b878;
-    }
-
-    .cta-light:hover {
-      background: transparent;
-      color: #d4b878;
+    .wax-cta:hover {
       transform: translateY(-2px);
-      letter-spacing: 5px;
-    }
-
-    .cta-dark {
-      color: var(--parchment);
-      background: var(--ink);
-      border: 1px solid var(--ink);
-    }
-
-    .cta-dark:hover {
-      background: var(--brass);
-      color: var(--parchment);
-      border-color: var(--brass);
-      transform: translateY(-2px);
+      box-shadow: 0 10px 32px rgba(184,142,58,0.4), inset 0 1px 0 rgba(255,255,255,0.4);
       letter-spacing: 5px;
     }
 
     .hero-walkin {
-      display: block;
-      margin-top: 18px;
-      font-family: 'Cormorant Garamond', serif;
+      font-family: 'IM Fell English', serif;
       font-style: italic;
-      font-size: 15px;
-      color: #b0a085;
+      color: var(--parchment-dark);
+      font-size: 14px;
+      opacity: 0.8;
     }
 
-    /* ─── PROOF / QUOTE ─── */
-    .quote {
-      padding: 100px 24px;
+    .scroll-hint {
+      position: absolute;
+      bottom: 28px;
+      left: 50%;
+      transform: translateX(-50%);
+      z-index: 3;
+      text-align: center;
+      animation: pulse 2.5s ease-in-out infinite;
+    }
+    .scroll-hint-text {
+      font-family: 'IM Fell English', serif;
+      font-style: italic;
+      font-size: 11px;
+      letter-spacing: 5px;
+      text-transform: uppercase;
+      color: var(--brass-bright);
+      margin-bottom: 10px;
+      display: block;
+    }
+    .scroll-hint-line {
+      width: 1px; height: 36px;
+      background: linear-gradient(to bottom, var(--brass-bright), transparent);
+      margin: 0 auto;
+    }
+    @keyframes pulse {
+      0%, 100% { opacity: 0.6; transform: translateX(-50%) translateY(0); }
+      50%      { opacity: 1; transform: translateX(-50%) translateY(4px); }
+    }
+
+    /* ─────────────────────────────────────────
+       SECTION DIVIDERS — ORNAMENTAL
+    ───────────────────────────────────────── */
+    .ornament {
+      display: flex; align-items: center; justify-content: center;
+      gap: 18px;
+      padding: 60px 24px 30px;
+    }
+    .ornament-line {
+      flex: 0 0 80px; max-width: 18vw;
+      height: 1px;
+      background: linear-gradient(to right, transparent, var(--brass));
+    }
+    .ornament-line:last-of-type { background: linear-gradient(to left, transparent, var(--brass)); }
+    .ornament-mark {
+      font-family: 'IM Fell English', serif;
+      color: var(--brass);
+      font-size: 18px;
+      letter-spacing: 6px;
+      font-style: italic;
+    }
+
+    /* ─────────────────────────────────────────
+       PROLOGUE / QUOTE
+    ───────────────────────────────────────── */
+    .prologue {
+      padding: 40px 24px 90px;
       text-align: center;
     }
 
-    .quote-text {
+    .prologue-eyebrow {
+      font-family: 'IM Fell English', serif;
+      font-style: italic;
+      font-size: 13px;
+      letter-spacing: 5px;
+      text-transform: uppercase;
+      color: var(--brass);
+      margin-bottom: 28px;
+    }
+
+    .prologue-text {
       font-family: 'Cormorant Garamond', serif;
       font-style: italic;
       font-weight: 400;
-      font-size: clamp(22px, 3vw, 30px);
+      font-size: clamp(24px, 3.2vw, 34px);
       color: var(--ink);
-      max-width: 680px;
-      margin: 0 auto 18px;
+      max-width: 720px;
+      margin: 0 auto 24px;
       line-height: 1.45;
     }
 
-    .quote-text::before, .quote-text::after {
+    .prologue-text::first-letter {
+      font-family: 'IM Fell English', serif;
+      font-size: 4em;
+      float: left;
+      line-height: 0.85;
+      padding: 6px 14px 0 0;
       color: var(--brass);
-      font-weight: 600;
+      font-style: normal;
     }
 
-    .quote-text::before { content: '"'; margin-right: 4px; }
-    .quote-text::after { content: '"'; margin-left: 4px; }
-
-    .quote-attr {
-      font-size: 11px;
-      letter-spacing: 4px;
+    .prologue-attr {
+      font-family: 'IM Fell English', serif;
+      font-style: italic;
+      font-size: 13px;
+      letter-spacing: 3px;
       text-transform: uppercase;
-      color: var(--brass);
+      color: var(--muted);
     }
 
-    /* ─── ATMOSPHERE GRID ─── */
-    .atmosphere {
-      display: grid;
-      grid-template-columns: 1fr 1fr 1fr;
-      gap: 0;
+    /* ─────────────────────────────────────────
+       POLAROID GALLERY
+    ───────────────────────────────────────── */
+    .gallery {
+      padding: 60px 24px;
+      display: flex;
+      justify-content: center;
+      flex-wrap: wrap;
+      gap: 30px;
+      max-width: 1200px;
+      margin: 0 auto;
     }
 
-    .atmosphere img {
-      width: 100%; height: 360px;
-      object-fit: cover; display: block;
+    .polaroid {
+      background: #f9f3e0;
+      padding: 14px 14px 50px;
+      box-shadow: 0 14px 30px rgba(0,0,0,0.18), 0 4px 8px rgba(0,0,0,0.12);
+      transition: all 0.4s cubic-bezier(0.2, 0.8, 0.2, 1);
+      position: relative;
+    }
+    .polaroid:hover {
+      transform: rotate(0deg) translateY(-8px) scale(1.03);
+      box-shadow: 0 24px 60px rgba(0,0,0,0.28), 0 8px 16px rgba(0,0,0,0.15);
+      z-index: 5;
+    }
+    .polaroid img {
+      display: block;
+      width: 280px;
+      height: 340px;
+      object-fit: cover;
+    }
+    .polaroid-caption {
+      position: absolute;
+      bottom: 10px; left: 0; right: 0;
+      text-align: center;
+      font-family: 'IM Fell English', serif;
+      font-style: italic;
+      font-size: 14px;
+      color: var(--ink-soft);
+      letter-spacing: 1px;
+    }
+    .polaroid:nth-child(1) { transform: rotate(-3deg); }
+    .polaroid:nth-child(2) { transform: rotate(2deg) translateY(20px); }
+    .polaroid:nth-child(3) { transform: rotate(-1.5deg); }
+
+    @media (max-width: 720px) {
+      .polaroid img { width: 220px; height: 270px; }
+      .polaroid:nth-child(2) { transform: rotate(2deg); }
     }
 
-    @media (max-width: 768px) {
-      .atmosphere { grid-template-columns: 1fr 1fr; }
-      .atmosphere img { height: 220px; }
-      .atmosphere img:nth-child(3) { grid-column: 1 / -1; height: 280px; }
-    }
-
-    /* ─── MENU SECTION ─── */
+    /* ─────────────────────────────────────────
+       MENU — CHAPTERS
+    ───────────────────────────────────────── */
     .menu {
-      padding: 100px 24px;
+      padding: 60px 24px 100px;
     }
 
     .menu-inner {
@@ -283,77 +436,97 @@
     }
 
     .menu-eyebrow {
-      font-family: 'Cormorant Garamond', serif;
+      font-family: 'IM Fell English', serif;
       font-style: italic;
-      font-size: 14px;
+      font-size: 13px;
       color: var(--brass);
-      letter-spacing: 4px;
+      letter-spacing: 5px;
       text-transform: uppercase;
       text-align: center;
       margin-bottom: 14px;
     }
 
     .menu-title {
-      font-family: 'Cormorant Garamond', serif;
-      font-weight: 500;
-      font-size: clamp(36px, 6vw, 56px);
+      font-family: 'IM Fell English SC', serif;
+      font-weight: 400;
+      font-size: clamp(36px, 5.5vw, 56px);
       text-align: center;
       color: var(--ink);
       margin-bottom: 12px;
-      line-height: 1.1;
-    }
-
-    .menu-title em {
-      font-style: italic;
-      color: var(--brass);
+      letter-spacing: 3px;
     }
 
     .menu-sub {
-      font-family: 'Cormorant Garamond', serif;
+      font-family: 'IM Fell English', serif;
       font-style: italic;
       font-size: 18px;
       text-align: center;
       color: var(--muted);
-      margin-bottom: 60px;
+      margin-bottom: 50px;
       max-width: 560px;
       margin-left: auto;
       margin-right: auto;
     }
 
-    .menu-section-title {
-      font-family: 'Cormorant Garamond', serif;
-      font-size: 22px;
-      letter-spacing: 5px;
-      text-transform: uppercase;
-      color: var(--brass);
-      text-align: center;
-      margin: 60px 0 8px;
-      font-weight: 500;
+    .chapter {
+      margin-top: 70px;
     }
 
-    .menu-section-title::before, .menu-section-title::after {
-      content: '◆';
-      margin: 0 14px;
-      font-size: 8px;
-      vertical-align: middle;
-      color: var(--brass-deep);
-      opacity: 0.6;
-    }
-
-    .menu-section-sub {
-      font-family: 'Cormorant Garamond', serif;
-      font-style: italic;
+    .chapter-head {
       text-align: center;
-      color: var(--muted);
       margin-bottom: 36px;
+      position: relative;
+    }
+
+    .chapter-numeral {
+      display: inline-block;
+      font-family: 'IM Fell English SC', serif;
+      font-size: 64px;
+      color: var(--brass);
+      line-height: 1;
+      letter-spacing: 4px;
+      opacity: 0.4;
+      margin-bottom: -10px;
+    }
+
+    .chapter-title {
+      font-family: 'IM Fell English SC', serif;
+      font-size: 26px;
+      letter-spacing: 8px;
+      color: var(--ink);
+      text-transform: uppercase;
+      position: relative;
+      z-index: 2;
+      margin-bottom: 8px;
+    }
+
+    .chapter-sub {
+      font-family: 'IM Fell English', serif;
+      font-style: italic;
+      color: var(--muted);
       font-size: 16px;
+    }
+
+    .chapter-flourish {
+      display: flex; align-items: center; justify-content: center;
+      gap: 12px;
+      margin-top: 16px;
+    }
+    .chapter-flourish-line {
+      width: 50px; height: 1px;
+      background: linear-gradient(to right, transparent, var(--brass));
+    }
+    .chapter-flourish-line:last-child { background: linear-gradient(to left, transparent, var(--brass)); }
+    .chapter-flourish-dot {
+      width: 5px; height: 5px;
+      background: var(--brass);
+      border-radius: 50%;
     }
 
     .dish {
       padding: 22px 0;
       border-bottom: 1px solid rgba(138,100,32,0.18);
     }
-
     .dish:last-child { border-bottom: none; }
 
     .dish-head {
@@ -367,37 +540,216 @@
     .dish-name {
       font-family: 'Cormorant Garamond', serif;
       font-size: 22px;
-      font-weight: 500;
+      font-weight: 600;
       color: var(--ink);
       letter-spacing: 0.5px;
     }
 
     .dish-dots {
       flex: 1;
-      border-bottom: 1px dotted rgba(138,100,32,0.45);
+      border-bottom: 1px dotted rgba(138,100,32,0.5);
       margin: 0 12px 6px;
     }
 
     .dish-price {
-      font-family: 'Cormorant Garamond', serif;
+      font-family: 'IM Fell English SC', serif;
       font-size: 20px;
       color: var(--brass);
-      font-weight: 600;
+      font-weight: 400;
+      letter-spacing: 1px;
       white-space: nowrap;
     }
 
     .dish-desc {
-      font-size: 14px;
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 16px;
+      font-style: italic;
       color: var(--muted);
-      font-weight: 400;
-      line-height: 1.6;
-      max-width: 90%;
+      line-height: 1.55;
+      max-width: 92%;
     }
 
-    /* ─── CLOSER ─── */
+    /* ─────────────────────────────────────────
+       THE REEL — VIDEO CABINET
+    ───────────────────────────────────────── */
+    .reel-section {
+      background: var(--ink-deep);
+      padding: 90px 24px 110px;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .reel-section::before {
+      content: '';
+      position: absolute; inset: 0;
+      background:
+        radial-gradient(ellipse at top, rgba(184,142,58,0.08) 0%, transparent 60%),
+        radial-gradient(circle at 20% 80%, rgba(184,142,58,0.04) 0%, transparent 50%);
+      pointer-events: none;
+    }
+
+    .reel-inner {
+      max-width: 900px;
+      margin: 0 auto;
+      position: relative;
+      z-index: 2;
+    }
+
+    .reel-header {
+      text-align: center;
+      margin-bottom: 50px;
+    }
+
+    .reel-eyebrow {
+      font-family: 'IM Fell English', serif;
+      font-style: italic;
+      font-size: 13px;
+      letter-spacing: 5px;
+      text-transform: uppercase;
+      color: var(--brass-bright);
+      margin-bottom: 14px;
+    }
+
+    .reel-title {
+      font-family: 'IM Fell English SC', serif;
+      font-size: clamp(36px, 5.5vw, 52px);
+      color: var(--parchment-light);
+      letter-spacing: 5px;
+      margin-bottom: 12px;
+    }
+
+    .reel-title em {
+      font-family: 'IM Fell English', serif;
+      font-style: italic;
+      color: var(--brass-bright);
+      letter-spacing: 1px;
+      text-transform: lowercase;
+    }
+
+    .reel-sub {
+      font-family: 'IM Fell English', serif;
+      font-style: italic;
+      color: var(--parchment-dark);
+      font-size: 17px;
+      max-width: 540px;
+      margin: 0 auto;
+    }
+
+    /* Marquee/Cabinet frame */
+    .cabinet {
+      position: relative;
+      max-width: 720px;
+      margin: 0 auto;
+      padding: 24px;
+      background: linear-gradient(145deg, #2a1d10 0%, #1a1108 50%, #14100a 100%);
+      border: 1px solid var(--brass-deep);
+      box-shadow:
+        0 30px 80px rgba(0,0,0,0.6),
+        inset 0 1px 0 rgba(184,142,58,0.2),
+        inset 0 -1px 0 rgba(0,0,0,0.5);
+    }
+
+    /* Cabinet ornaments */
+    .cabinet::before, .cabinet::after {
+      content: '';
+      position: absolute;
+      top: -1px; bottom: -1px;
+      width: 14px;
+      background: linear-gradient(to right, var(--brass-deep), transparent);
+    }
+    .cabinet::before { left: -1px; }
+    .cabinet::after { right: -1px; transform: scaleX(-1); }
+
+    .cabinet-corner {
+      position: absolute;
+      width: 22px; height: 22px;
+      border: 1px solid var(--brass-bright);
+      opacity: 0.7;
+    }
+    .cabinet-corner.tl { top: 8px; left: 8px; border-right: none; border-bottom: none; }
+    .cabinet-corner.tr { top: 8px; right: 8px; border-left: none; border-bottom: none; }
+    .cabinet-corner.bl { bottom: 8px; left: 8px; border-right: none; border-top: none; }
+    .cabinet-corner.br { bottom: 8px; right: 8px; border-left: none; border-top: none; }
+
+    .cabinet-screen {
+      position: relative;
+      aspect-ratio: 9 / 16;
+      max-height: 700px;
+      max-width: 400px;
+      margin: 0 auto;
+      background: black;
+      overflow: hidden;
+      box-shadow: inset 0 0 60px rgba(0,0,0,0.8);
+    }
+
+    .cabinet-screen video {
+      width: 100%; height: 100%;
+      object-fit: cover;
+      display: block;
+    }
+
+    /* Vintage screen scanlines + vignette */
+    .cabinet-screen::after {
+      content: '';
+      position: absolute; inset: 0;
+      pointer-events: none;
+      background:
+        repeating-linear-gradient(
+          to bottom,
+          rgba(0,0,0,0) 0px,
+          rgba(0,0,0,0) 2px,
+          rgba(0,0,0,0.06) 3px,
+          rgba(0,0,0,0) 4px
+        ),
+        radial-gradient(ellipse at center, transparent 60%, rgba(0,0,0,0.5) 100%);
+    }
+
+    .cabinet-plate {
+      position: absolute;
+      bottom: -18px; left: 50%; transform: translateX(-50%);
+      background: var(--brass);
+      color: var(--ink-deep);
+      font-family: 'IM Fell English SC', serif;
+      font-size: 11px;
+      letter-spacing: 4px;
+      padding: 8px 24px;
+      border: 1px solid var(--brass-deep);
+      box-shadow: 0 4px 16px rgba(0,0,0,0.4);
+    }
+
+    /* Marquee dish names */
+    .dish-marquee {
+      margin-top: 70px;
+      overflow: hidden;
+      white-space: nowrap;
+      border-top: 1px solid rgba(184,142,58,0.2);
+      border-bottom: 1px solid rgba(184,142,58,0.2);
+      padding: 22px 0;
+    }
+    .dish-marquee-track {
+      display: inline-block;
+      animation: scroll 35s linear infinite;
+      font-family: 'IM Fell English SC', serif;
+      font-size: 18px;
+      letter-spacing: 6px;
+      color: var(--brass-bright);
+    }
+    .dish-marquee-track span {
+      display: inline-block;
+      margin: 0 36px;
+    }
+    .dish-marquee-track .sep { color: var(--brass-deep); }
+    @keyframes scroll {
+      from { transform: translateX(0); }
+      to   { transform: translateX(-50%); }
+    }
+
+    /* ─────────────────────────────────────────
+       CLOSER
+    ───────────────────────────────────────── */
     .closer {
       position: relative;
-      padding: 120px 24px;
+      padding: 130px 24px;
       text-align: center;
       overflow: hidden;
     }
@@ -409,6 +761,12 @@
       filter: brightness(0.32) saturate(1.1);
     }
 
+    .closer::after {
+      content: '';
+      position: absolute; inset: 0;
+      background: radial-gradient(ellipse at center, transparent 0%, rgba(20,16,10,0.7) 100%);
+    }
+
     .closer-inner {
       position: relative; z-index: 2;
       max-width: 640px;
@@ -416,46 +774,52 @@
     }
 
     .closer-eyebrow {
-      font-family: 'Cormorant Garamond', serif;
+      font-family: 'IM Fell English', serif;
       font-style: italic;
-      font-size: 14px;
-      color: #d4b878;
-      letter-spacing: 4px;
+      font-size: 13px;
+      color: var(--brass-bright);
+      letter-spacing: 5px;
       text-transform: uppercase;
-      margin-bottom: 18px;
+      margin-bottom: 22px;
     }
 
     .closer-title {
-      font-family: 'Cormorant Garamond', serif;
-      font-weight: 500;
-      font-size: clamp(36px, 6vw, 56px);
-      color: #f4ead4;
+      font-family: 'IM Fell English SC', serif;
+      font-size: clamp(38px, 6vw, 56px);
+      color: var(--parchment-light);
       line-height: 1.1;
       margin-bottom: 14px;
+      letter-spacing: 4px;
     }
 
     .closer-title em {
+      font-family: 'IM Fell English', serif;
       font-style: italic;
-      color: #d4b878;
+      color: var(--brass-bright);
+      letter-spacing: 1px;
+      text-transform: lowercase;
     }
 
     .closer-sub {
-      font-family: 'Cormorant Garamond', serif;
+      font-family: 'IM Fell English', serif;
       font-style: italic;
       font-size: 18px;
-      color: #ece2c8;
-      margin-bottom: 36px;
-      font-weight: 300;
+      color: var(--parchment);
+      margin-bottom: 38px;
+      max-width: 520px;
+      margin-left: auto; margin-right: auto;
     }
 
-    /* ─── INFO ─── */
+    /* ─────────────────────────────────────────
+       INFO BAR
+    ───────────────────────────────────────── */
     .info {
-      padding: 80px 24px 60px;
-      border-top: 1px solid rgba(138,100,32,0.2);
+      padding: 90px 24px 70px;
+      border-top: 1px solid rgba(138,100,32,0.25);
     }
 
     .info-grid {
-      max-width: 900px;
+      max-width: 920px;
       margin: 0 auto;
       display: grid;
       grid-template-columns: repeat(3, 1fr);
@@ -468,19 +832,20 @@
     }
 
     .info-label {
-      font-family: 'Cormorant Garamond', serif;
+      font-family: 'IM Fell English', serif;
       font-style: italic;
-      font-size: 13px;
-      letter-spacing: 4px;
+      font-size: 12px;
+      letter-spacing: 5px;
       text-transform: uppercase;
       color: var(--brass);
-      margin-bottom: 14px;
+      margin-bottom: 16px;
     }
 
     .info-block p {
-      font-size: 14px;
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 17px;
       color: var(--ink);
-      line-height: 1.8;
+      line-height: 1.7;
     }
 
     .info-block a {
@@ -489,50 +854,55 @@
       border-bottom: 1px solid rgba(138,100,32,0.4);
       transition: border-color 0.2s, color 0.2s;
     }
-
-    .info-block a:hover {
-      color: var(--brass);
-      border-color: var(--brass);
-    }
+    .info-block a:hover { color: var(--brass); border-color: var(--brass); }
 
     /* ─── FOOTER ─── */
     .footer {
       background: var(--ink-deep);
-      padding: 32px 24px 40px;
+      padding: 38px 24px 44px;
       text-align: center;
-      border-top: 1px solid rgba(138,100,32,0.2);
+      border-top: 1px solid rgba(184,142,58,0.2);
     }
-
     .footer-mark {
-      font-family: 'Cormorant Garamond', serif;
+      font-family: 'IM Fell English SC', serif;
       font-size: 18px;
-      letter-spacing: 6px;
-      text-transform: uppercase;
-      color: #d4b878;
+      letter-spacing: 8px;
+      color: var(--brass-bright);
       margin-bottom: 8px;
     }
-
     .footer p {
-      font-size: 11px;
-      color: #b0a085;
+      font-family: 'IM Fell English', serif;
+      font-style: italic;
+      font-size: 12px;
+      color: var(--parchment-dark);
       letter-spacing: 1px;
+      opacity: 0.8;
     }
+    .footer a { color: var(--brass-bright); text-decoration: none; }
 
-    .footer a {
-      color: #d4b878;
-      text-decoration: none;
-    }
-
-    /* ─── POLICY ─── */
     .policy {
-      padding: 16px 24px;
+      padding: 18px 24px;
       text-align: center;
-      font-family: 'Cormorant Garamond', serif;
+      font-family: 'IM Fell English', serif;
       font-style: italic;
       font-size: 13px;
       color: var(--muted);
       letter-spacing: 1px;
       border-top: 1px solid rgba(138,100,32,0.18);
+    }
+
+    /* ─── MOBILE ADJUSTMENTS ─── */
+    @media (max-width: 600px) {
+      .topbar { padding: 14px 18px; }
+      .topbar-mark { font-size: 14px; letter-spacing: 4px; }
+      .topbar-cta { padding: 7px 14px; font-size: 10px; letter-spacing: 2px; }
+      .bookplate { padding: 50px 24px 40px; }
+      .bookplate::before, .bookplate::after,
+      .bookplate-corners > span { width: 38px; height: 38px; }
+      .hero-title { letter-spacing: 2px; }
+      .polaroid img { width: 240px; height: 290px; }
+      .cabinet { padding: 14px; }
+      .cabinet-screen { max-height: 500px; }
     }
   </style>
 </head>
@@ -540,150 +910,270 @@
 
   <!-- ─── TOP BAR ─── -->
   <nav class="topbar">
-    <a href="https://www.vintagebookshawaii.com/">Vintage <span>books</span></a>
+    <a href="https://www.vintagebookshawaii.com/" class="topbar-mark">Vintage <span>books</span></a>
+    <a href="https://www.vintagebookshawaii.com/kaimuki-restaurant-reservations" class="topbar-cta" onclick="if(typeof fbq!=='undefined')fbq('track','Lead',{content_name:'Top Nav CTA'});">Reserve</a>
   </nav>
 
-  <!-- ─── HERO ─── -->
+  <!-- ─────────────────────────────────────────
+       HERO — THE BOOKPLATE
+  ───────────────────────────────────────── -->
   <section class="hero">
-    <video class="hero-bg" autoplay muted loop playsinline preload="auto" poster="IMG_9094.jpg">
-      <source src="hero.mp4" type="video/mp4">
-      <source src="hero.mov" type="video/quicktime">
-    </video>
-    <div class="hero-content">
-      <p class="hero-eyebrow">— Saturday &amp; Sunday Brunch —</p>
-      <h1 class="hero-title">A New Chapter<br><em>Begins at Brunch.</em></h1>
-      <p class="hero-tagline">Beyond the bookshelf, slow mornings unfold over chef-driven plates, poached Waialua eggs, and a quiet kind of magic only Kaimuki knows.</p>
-      <p class="hero-when">Sat &amp; Sun &bull; 10AM &ndash; 2PM &bull; Kaimuki, Honolulu</p>
-      <a href="https://www.vintagebookshawaii.com/kaimuki-restaurant-reservations" class="cta cta-light" id="cta-hero" onclick="if(typeof fbq!=='undefined')fbq('track','Lead',{content_name:'Hero CTA Brunch'});">Reserve a Table</a>
-      <span class="hero-walkin">— Walk-ins welcome at the bar —</span>
+    <img class="hero-photo" src="IMG_0568.jpg" alt="French toast brunch at Vintage Books">
+    <div class="bookplate">
+      <span class="bookplate-corners"><span></span><span></span></span>
+
+      <p class="hero-volume">— Volume I &middot; The Brunch Edition —</p>
+
+      <div class="hero-flourish">
+        <span class="hero-flourish-line"></span>
+        <span class="hero-flourish-mark">&#10086;</span>
+        <span class="hero-flourish-line"></span>
+      </div>
+
+      <h1 class="hero-title">A Slow Morning <span class="hero-amp">in</span><br>Old Kaimuki</h1>
+
+      <p class="hero-tagline">A weekend chapter served beneath the bookshelves &mdash; chef-driven plates, poached Waialua eggs, and the kind of quiet that only exists before noon.</p>
+
+      <div class="wax-cta-wrap">
+        <a href="https://www.vintagebookshawaii.com/kaimuki-restaurant-reservations" class="wax-cta" onclick="if(typeof fbq!=='undefined')fbq('track','Lead',{content_name:'Hero Wax Seal CTA'});">Reserve Your Chapter</a>
+        <span class="hero-walkin">— or walk in at the bar —</span>
+      </div>
+    </div>
+
+    <div class="scroll-hint">
+      <span class="scroll-hint-text">Turn the page</span>
+      <div class="scroll-hint-line"></div>
     </div>
   </section>
 
-  <!-- ─── PROOF QUOTE ─── -->
-  <section class="quote">
-    <p class="quote-text">Where literary charm meets culinary brilliance &mdash; Honolulu&rsquo;s best-kept secret, hidden in plain sight.</p>
-    <p class="quote-attr">&#9733; &#9733; &#9733; &#9733; &#9733; &nbsp;&middot;&nbsp; Kaimuki&rsquo;s Speakeasy Brunch</p>
+  <!-- ─── PROLOGUE QUOTE ─── -->
+  <div class="ornament">
+    <span class="ornament-line"></span>
+    <span class="ornament-mark">&#x2766;</span>
+    <span class="ornament-line"></span>
+  </div>
+
+  <section class="prologue">
+    <p class="prologue-eyebrow">— Prologue —</p>
+    <p class="prologue-text">Beyond the bookshelf, slow mornings unfold over chef-driven plates and the sort of quiet you don&rsquo;t find on Waialae after noon. Brunch, here, is best read aloud.</p>
+    <p class="prologue-attr">— Saturday &amp; Sunday &middot; 10AM &ndash; 2PM —</p>
   </section>
 
-  <!-- ─── ATMOSPHERE ─── -->
-  <div class="atmosphere">
-    <img src="IMG_0568.jpg" alt="French toast brunch at Vintage Books" loading="lazy">
-    <img src="IMG_0610.jpg" alt="Smoked salmon avocado toast" loading="lazy">
-    <img src="IMG_9094.jpg" alt="Brunch spread at Vintage Books" loading="lazy">
+  <!-- ─── POLAROID GALLERY ─── -->
+  <div class="gallery">
+    <div class="polaroid">
+      <img src="IMG_0568.jpg" alt="Punaluu guava French toast">
+      <div class="polaroid-caption">Punaluu French toast</div>
+    </div>
+    <div class="polaroid">
+      <img src="IMG_0610.jpg" alt="Smoked salmon avocado toast">
+      <div class="polaroid-caption">Salmon avocado toast</div>
+    </div>
+    <div class="polaroid">
+      <img src="IMG_9094.jpg" alt="Brunch spread">
+      <div class="polaroid-caption">A proper spread</div>
+    </div>
   </div>
 
   <!-- ─── MENU ─── -->
+  <div class="ornament">
+    <span class="ornament-line"></span>
+    <span class="ornament-mark">&#x2766;</span>
+    <span class="ornament-line"></span>
+  </div>
+
   <section class="menu">
     <div class="menu-inner">
       <p class="menu-eyebrow">— The Brunch Menu —</p>
-      <h2 class="menu-title">Stories on a <em>Plate</em></h2>
+      <h2 class="menu-title">Stories on a Plate</h2>
       <p class="menu-sub">From poached Waialua eggs to Punaluu guava French toast &mdash; each dish is a chapter, each ingredient sourced with intention.</p>
 
-      <!-- SAVORY -->
-      <h3 class="menu-section-title">Savory</h3>
-      <p class="menu-section-sub">Slow mornings, properly rewarded</p>
-
-      <div class="dish">
-        <div class="dish-head">
-          <span class="dish-name">Full Vintage Breakfast</span>
-          <span class="dish-dots"></span>
-          <span class="dish-price">$23</span>
+      <!-- CHAPTER I -->
+      <div class="chapter">
+        <div class="chapter-head">
+          <p class="chapter-numeral">I.</p>
+          <h3 class="chapter-title">The Savory</h3>
+          <p class="chapter-sub">Slow mornings, properly rewarded</p>
+          <div class="chapter-flourish">
+            <span class="chapter-flourish-line"></span>
+            <span class="chapter-flourish-dot"></span>
+            <span class="chapter-flourish-line"></span>
+          </div>
         </div>
-        <p class="dish-desc">Two eggs over easy, thick cut smoked bacon, Portuguese sausage, chive hash browns, fresh fruit.</p>
+
+        <div class="dish">
+          <div class="dish-head">
+            <span class="dish-name">Full Vintage Breakfast</span>
+            <span class="dish-dots"></span>
+            <span class="dish-price">$23</span>
+          </div>
+          <p class="dish-desc">Two eggs over easy, thick cut smoked bacon, Portuguese sausage, chive hash browns, fresh fruit.</p>
+        </div>
+
+        <div class="dish">
+          <div class="dish-head">
+            <span class="dish-name">French Style Omelette</span>
+            <span class="dish-dots"></span>
+            <span class="dish-price">$22</span>
+          </div>
+          <p class="dish-desc">Herbed lemon ricotta, caramelized onions, garlic arugula, saut&eacute;ed shiitake mushrooms, side island salad.</p>
+        </div>
+
+        <div class="dish">
+          <div class="dish-head">
+            <span class="dish-name">Vintage Books Breakfast Burrito</span>
+            <span class="dish-dots"></span>
+            <span class="dish-price">$22</span>
+          </div>
+          <p class="dish-desc">Cochinita Pibil braised pork, two eggs, cotija, potatoes, black beans, tomatillo salsa, side house salad.</p>
+        </div>
+
+        <div class="dish">
+          <div class="dish-head">
+            <span class="dish-name">Smoked Salmon Avocado Toast</span>
+            <span class="dish-dots"></span>
+            <span class="dish-price">$21</span>
+          </div>
+          <p class="dish-desc">Seasoned herbed edamame hummus, Kupu Place micro greens, poached Waialua egg, grilled French bread, sliced tomato, side salad.</p>
+        </div>
+
+        <div class="dish">
+          <div class="dish-head">
+            <span class="dish-name">Steak &amp; Eggs</span>
+            <span class="dish-dots"></span>
+            <span class="dish-price">$32</span>
+          </div>
+          <p class="dish-desc">6oz Ribeye, two eggs over easy, buttered baby carrots, pickled vegetables, chive hash browns.</p>
+        </div>
+
+        <div class="dish">
+          <div class="dish-head">
+            <span class="dish-name">Jumbo Lump Crab Benedict</span>
+            <span class="dish-dots"></span>
+            <span class="dish-price">$25</span>
+          </div>
+          <p class="dish-desc">Poached Waialua eggs, English muffin, yuzu hollandaise, chive hash browns, pickled onions, side house salad.</p>
+        </div>
+
+        <div class="dish">
+          <div class="dish-head">
+            <span class="dish-name">Norwegian Smoked Salmon Benedict</span>
+            <span class="dish-dots"></span>
+            <span class="dish-price">$24</span>
+          </div>
+          <p class="dish-desc">Poached Waialua eggs, English muffin, garlic arugula, yuzu hollandaise, side house salad.</p>
+        </div>
       </div>
 
-      <div class="dish">
-        <div class="dish-head">
-          <span class="dish-name">French Style Omelette</span>
-          <span class="dish-dots"></span>
-          <span class="dish-price">$22</span>
+      <!-- CHAPTER II -->
+      <div class="chapter">
+        <div class="chapter-head">
+          <p class="chapter-numeral">II.</p>
+          <h3 class="chapter-title">The Sweets</h3>
+          <p class="chapter-sub">For the dessert-for-breakfast believers</p>
+          <div class="chapter-flourish">
+            <span class="chapter-flourish-line"></span>
+            <span class="chapter-flourish-dot"></span>
+            <span class="chapter-flourish-line"></span>
+          </div>
         </div>
-        <p class="dish-desc">Herbed lemon ricotta, caramelized onions, garlic arugula, saut&eacute;ed shiitake mushrooms, side island salad.</p>
-      </div>
 
-      <div class="dish">
-        <div class="dish-head">
-          <span class="dish-name">Vintage Books Breakfast Burrito</span>
-          <span class="dish-dots"></span>
-          <span class="dish-price">$22</span>
+        <div class="dish">
+          <div class="dish-head">
+            <span class="dish-name">Buttermilk Pancakes</span>
+            <span class="dish-dots"></span>
+            <span class="dish-price">$20</span>
+          </div>
+          <p class="dish-desc">Two pancakes, smoked bacon, fresh fruit compote, whipped cream, maple syrup.</p>
         </div>
-        <p class="dish-desc">Cochinita Pibil braised pork, two eggs, cotija, potatoes, black beans, tomatillo salsa, side house salad.</p>
-      </div>
 
-      <div class="dish">
-        <div class="dish-head">
-          <span class="dish-name">Smoked Salmon Avocado Toast</span>
-          <span class="dish-dots"></span>
-          <span class="dish-price">$21</span>
+        <div class="dish">
+          <div class="dish-head">
+            <span class="dish-name">Punaluu Guava Sweet Bread French Toast</span>
+            <span class="dish-dots"></span>
+            <span class="dish-price">$18</span>
+          </div>
+          <p class="dish-desc">Fresh local fruit, whipped cream, cinnamon powdered sugar.</p>
         </div>
-        <p class="dish-desc">Seasoned herbed edamame hummus, Kupu Place micro greens, poached Waialua egg, grilled French bread, sliced tomato, side salad.</p>
-      </div>
 
-      <div class="dish">
-        <div class="dish-head">
-          <span class="dish-name">Steak &amp; Eggs</span>
-          <span class="dish-dots"></span>
-          <span class="dish-price">$32</span>
+        <div class="dish">
+          <div class="dish-head">
+            <span class="dish-name">Daily Assorted Scones</span>
+            <span class="dish-dots"></span>
+            <span class="dish-price">$8</span>
+          </div>
+          <p class="dish-desc">Baked in-house each morning. Ask your server what's fresh.</p>
         </div>
-        <p class="dish-desc">6oz Ribeye, two eggs over easy, buttered baby carrots, pickled vegetables, chive hash browns.</p>
-      </div>
-
-      <div class="dish">
-        <div class="dish-head">
-          <span class="dish-name">Jumbo Lump Crab Benedict</span>
-          <span class="dish-dots"></span>
-          <span class="dish-price">$25</span>
-        </div>
-        <p class="dish-desc">Poached Waialua eggs, English muffin, yuzu hollandaise, chive hash browns, pickled onions, side house salad.</p>
-      </div>
-
-      <div class="dish">
-        <div class="dish-head">
-          <span class="dish-name">Norwegian Smoked Salmon Benedict</span>
-          <span class="dish-dots"></span>
-          <span class="dish-price">$24</span>
-        </div>
-        <p class="dish-desc">Poached Waialua eggs, English muffin, garlic arugula, yuzu hollandaise, side house salad.</p>
-      </div>
-
-      <!-- SWEETS -->
-      <h3 class="menu-section-title">Sweets</h3>
-      <p class="menu-section-sub">For the dessert-for-breakfast believers</p>
-
-      <div class="dish">
-        <div class="dish-head">
-          <span class="dish-name">Buttermilk Pancakes</span>
-          <span class="dish-dots"></span>
-          <span class="dish-price">$20</span>
-        </div>
-        <p class="dish-desc">Two pancakes, smoked bacon, fresh fruit compote, whipped cream, maple syrup.</p>
-      </div>
-
-      <div class="dish">
-        <div class="dish-head">
-          <span class="dish-name">Punaluu Guava Sweet Bread French Toast</span>
-          <span class="dish-dots"></span>
-          <span class="dish-price">$18</span>
-        </div>
-        <p class="dish-desc">Fresh local fruit, whipped cream, cinnamon powdered sugar.</p>
-      </div>
-
-      <div class="dish">
-        <div class="dish-head">
-          <span class="dish-name">Daily Assorted Scones</span>
-          <span class="dish-dots"></span>
-          <span class="dish-price">$8</span>
-        </div>
-        <p class="dish-desc">Baked in-house each morning. Ask your server what's fresh.</p>
       </div>
     </div>
   </section>
 
-  <!-- ─── ATMOSPHERE 2 ─── -->
-  <div class="atmosphere">
-    <img src="IMG_9089.jpg" alt="Pancakes with bacon" loading="lazy">
-    <img src="IMG_0649.jpg" alt="French style omelette" loading="lazy">
-    <img src="IMG_0576.jpg" alt="Full vintage breakfast plate" loading="lazy">
+  <!-- ─────────────────────────────────────────
+       THE REEL — VIDEO IN VINTAGE CABINET
+  ───────────────────────────────────────── -->
+  <section class="reel-section">
+    <div class="reel-inner">
+      <div class="reel-header">
+        <p class="reel-eyebrow">— Now Showing —</p>
+        <h2 class="reel-title">The Brunch <em>reel</em></h2>
+        <p class="reel-sub">A peek behind the bookshelf. The plates, the pours, and the small ceremonies of a slower morning.</p>
+      </div>
+
+      <div class="cabinet">
+        <span class="cabinet-corner tl"></span>
+        <span class="cabinet-corner tr"></span>
+        <span class="cabinet-corner bl"></span>
+        <span class="cabinet-corner br"></span>
+
+        <div class="cabinet-screen">
+          <video autoplay muted loop playsinline preload="metadata" poster="IMG_9094.jpg">
+            <source src="hero.mp4" type="video/mp4">
+            <source src="hero.mov" type="video/quicktime">
+          </video>
+        </div>
+
+        <div class="cabinet-plate">Vol. I &middot; The Brunch Edition</div>
+      </div>
+    </div>
+
+    <!-- DISH MARQUEE -->
+    <div class="dish-marquee">
+      <div class="dish-marquee-track">
+        <span>Full Vintage Breakfast</span><span class="sep">&#x2766;</span>
+        <span>Crab Benedict</span><span class="sep">&#x2766;</span>
+        <span>Steak &amp; Eggs</span><span class="sep">&#x2766;</span>
+        <span>Punaluu French Toast</span><span class="sep">&#x2766;</span>
+        <span>Salmon Avocado Toast</span><span class="sep">&#x2766;</span>
+        <span>French Omelette</span><span class="sep">&#x2766;</span>
+        <span>Buttermilk Pancakes</span><span class="sep">&#x2766;</span>
+        <span>Vintage Burrito</span><span class="sep">&#x2766;</span>
+        <!-- duplicate for seamless loop -->
+        <span>Full Vintage Breakfast</span><span class="sep">&#x2766;</span>
+        <span>Crab Benedict</span><span class="sep">&#x2766;</span>
+        <span>Steak &amp; Eggs</span><span class="sep">&#x2766;</span>
+        <span>Punaluu French Toast</span><span class="sep">&#x2766;</span>
+        <span>Salmon Avocado Toast</span><span class="sep">&#x2766;</span>
+        <span>French Omelette</span><span class="sep">&#x2766;</span>
+        <span>Buttermilk Pancakes</span><span class="sep">&#x2766;</span>
+        <span>Vintage Burrito</span><span class="sep">&#x2766;</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- ─── SECOND POLAROID GALLERY ─── -->
+  <div class="gallery">
+    <div class="polaroid">
+      <img src="IMG_9089.jpg" alt="Pancakes with bacon">
+      <div class="polaroid-caption">Buttermilk pancakes</div>
+    </div>
+    <div class="polaroid">
+      <img src="IMG_0649.jpg" alt="French style omelette">
+      <div class="polaroid-caption">French omelette</div>
+    </div>
+    <div class="polaroid">
+      <img src="IMG_0576.jpg" alt="Full vintage breakfast plate">
+      <div class="polaroid-caption">Full Vintage</div>
+    </div>
   </div>
 
   <!-- ─── CLOSER ─── -->
@@ -693,7 +1183,7 @@
       <p class="closer-eyebrow">— Save Your Seat —</p>
       <h2 class="closer-title">Brunch is best <em>unhurried.</em></h2>
       <p class="closer-sub">Tables go quickly on weekends. Reserve your spot, settle in, and let the morning take its time.</p>
-      <a href="https://www.vintagebookshawaii.com/kaimuki-restaurant-reservations" class="cta cta-light" id="cta-closer" onclick="if(typeof fbq!=='undefined')fbq('track','Lead',{content_name:'Closer CTA Brunch'});">Reserve a Table</a>
+      <a href="https://www.vintagebookshawaii.com/kaimuki-restaurant-reservations" class="wax-cta" onclick="if(typeof fbq!=='undefined')fbq('track','Lead',{content_name:'Closer Wax Seal CTA'});">Reserve Your Chapter</a>
     </div>
   </section>
 
